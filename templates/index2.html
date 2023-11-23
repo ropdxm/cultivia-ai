@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+	<title>Crop Recommendation</title>
+</head>
+<body>	
+	<form method="POST" action="/results" class="crop">
+		<h1>Crop</h1>
+		<ul>
+			<span class="form-input">
+				<input type="text" name="N" placeholder="N">
+			</span>
+			<span class="form-input">
+				<input type="text" name="P" placeholder="P">
+			</span>
+			<span class="form-input">
+				<input type="text" name="K" placeholder="K">
+			</span>
+			<span class="form-input">
+				<input type="text" name="temperature" placeholder="temperature">
+			</span>
+			<span class="form-input">
+				<input type="text" name="humidity" placeholder="humidity">
+			</span>
+			<span class="form-input">
+				<input type="text" name="ph" placeholder="ph">
+			</span>
+			<span class="form-input">
+				<input type="text" name="rainfall" placeholder="rainfall">
+			</span>
+			</ul>
+			<input type="submit" class="form-button" name='submit_btn' value="Predict">
+			<div class="box1"></div>
+			<div class="box2"></div>
+	</form>
+
+
+</body>
+<script defer>
+	const crop = document.querySelector(".crop");
+const box1 = document.querySelector(".box1");
+const box2 = document.querySelector(".box2");
+
+document.addEventListener("mousemove", (e) => {
+	boxMove(e, box1, 3);
+	boxMove(e, box2, -2);
+});
+
+function boxMove(e, box, speed) {
+	let x = (window.innerWidth - e.pageX * speed) / 100;
+	let y = (window.innerHeight - e.pageY * speed) / 100;
+
+	box.style.transform = `translateX(${x}px) translateY(${y}px)`;
+}
+</script>
+</html>

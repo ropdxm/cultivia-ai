@@ -1,0 +1,6 @@
+flask
+wtforms
+pickle
+pandas
+os
+numpy
